@@ -1,3 +1,6 @@
+package tests;
+
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,11 +16,11 @@ public abstract class AbstractTest {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
         WebDriverRunner.setWebDriver(driver);
+        Configuration.baseUrl = "https://ok.ru";
     }
 
     @AfterAll
     static void afterAll() {
         WebDriverRunner.closeWebDriver();
-        driver.close();
     }
 }
