@@ -16,7 +16,7 @@ class MessagePageTest extends AbstractTest {
     @Test
     void testMessage() {
         LoginPage loginPage = new LoginPage();
-        UserDetails userDetails = new UserDetails("89214332531", "31072002");
+        UserDetails userDetails = new UserDetails("", "");
         loginPage.get().login(userDetails);
 
         MessagePage messagePage = new MessagePage();
