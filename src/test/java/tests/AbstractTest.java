@@ -4,23 +4,26 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import pages.LoginPage;
+import utils.UserDetails;
 
 public abstract class AbstractTest {
-    private static WebDriver driver;
 
     @BeforeAll
     static void beforeAll() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        driver = new ChromeDriver();
-        WebDriverRunner.setWebDriver(driver);
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        WebDriverRunner.setWebDriver(new ChromeDriver());
         Configuration.baseUrl = "https://ok.ru";
+
+        LoginPage loginPage = new LoginPage();
+        UserDetails userDetails = new UserDetails("89214332531", "31072002");
+        loginPage.get().login(userDetails);
     }
 
     @AfterAll
     static void afterAll() {
         WebDriverRunner.closeWebDriver();
     }
+
 }
