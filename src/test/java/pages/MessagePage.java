@@ -21,10 +21,11 @@ public class MessagePage extends LoadableComponent<MessagePage> {
     private static final By PEOPLE_AVATAR = By.xpath(".//img");
     private static final By CONVERSATION_NAME = By.xpath(".//div[@data-tsid='conversation_name']//msg-parsed-text");
     private static final By LAST_MESSAGE = By.xpath(".//div[@data-tsid='last_message']//msg-parsed-text");
+    private static final By MESSAGES_BUTTON = By.xpath("//li[@data-l='t,messages']");
 
     @Override
     protected void load() {
-        open("/messages");
+        $(MESSAGES_BUTTON).shouldBe(visible.because("Messages button isn't displayed")).click();
     }
 
     @Override

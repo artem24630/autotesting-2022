@@ -3,9 +3,9 @@ package pages;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 import utils.UserDetails;
-import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
@@ -18,7 +18,7 @@ public class LoginPage extends LoadableComponent<LoginPage> {
 
     @Override
     protected void load() {
-        Selenide.open("/");
+        open("/");
     }
 
     @Override

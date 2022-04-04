@@ -11,11 +11,12 @@ import static com.codeborne.selenide.Selenide.open;
 public class NewsPage extends LoadableComponent<NewsPage> {
 
     private static final By NEWS_FEED = By.id("hook_Block_UserMainFullMRB");
+    private static final By NEWS_BUTTON = By.xpath("//li[@data-l='t,userMain']");
     private static final By MESSAGES_BUTTON = By.xpath("//li[@data-l='t,messages']");
 
     @Override
     protected void load() {
-        open("/feeds");
+        $(NEWS_BUTTON).shouldBe(visible.because("News button isn't displayed")).click();
     }
 
     @Override
