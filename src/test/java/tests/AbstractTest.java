@@ -6,7 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
-import pages.NewsPage;
+import pages.NewsFeedPage;
 import utils.UserDetails;
 
 public abstract class AbstractTest {
@@ -19,8 +19,7 @@ public abstract class AbstractTest {
 
         LoginPage loginPage = new LoginPage();
         UserDetails userDetails = new UserDetails("89214332531", "31072002");
-        NewsPage newsPage = loginPage.get().login(userDetails);
-        newsPage.get();
+        loginPage.get().login(userDetails);
     }
 
     @AfterAll

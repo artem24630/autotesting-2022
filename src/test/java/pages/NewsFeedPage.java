@@ -7,10 +7,12 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class NewsPage extends LoadableComponent<NewsPage> {
+public class NewsFeedPage extends LoadableComponent<NewsFeedPage> {
 
     private static final By NEWS_FEED = By.id("hook_Block_UserMainFullMRB");
+    private static final By NAVIGATION_TOOLBAR = By.xpath("//div[@data-l='t,navigationToolbar']");
     private static final By NEWS_BUTTON = By.xpath("//li[@data-l='t,userMain']");
+    private static final By ECOSYSTEM_TOOLBAR = By.id("ph-whiteline");
 
     @Override
     protected void load() {
@@ -20,6 +22,8 @@ public class NewsPage extends LoadableComponent<NewsPage> {
     @Override
     protected void isLoaded() throws Error {
         $(NEWS_FEED).should(exist).shouldBe(visible);
+        $(NAVIGATION_TOOLBAR).should(exist).shouldBe(visible);
+        $(ECOSYSTEM_TOOLBAR).should(exist).shouldBe(visible);
     }
 
 }

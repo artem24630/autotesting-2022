@@ -29,12 +29,12 @@ public class LoginPage extends LoadableComponent<LoginPage> {
         $(REGISTER_BUTTON).should(exist);
     }
 
-    public NewsPage login(UserDetails userDetails) {
+    public NewsFeedPage login(UserDetails userDetails) {
         $(EMAIL_FIELD).shouldBe(visible.because("Email field isn't displayed!")).setValue(userDetails.login());
         $(PASSWORD_FIELD).shouldBe(visible.because("Password field isn't displayed!")).setValue(userDetails.password());
         $(INPUT_BUTTON).shouldBe(visible.because("Login button isn't displayed")).click();
 
-        return new NewsPage();
+        return new NewsFeedPage();
     }
 
 }
