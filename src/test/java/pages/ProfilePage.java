@@ -26,7 +26,9 @@ public class ProfilePage extends LoadableComponent<ProfilePage> {
 
     @Override
     protected void load() {
-        $(PROFILE_BTN).shouldBe(visible.because("News button isn't displayed")).click();
+        $(PROFILE_BTN)
+                .should(exist.because("Profile button isn't rendered"))
+                .shouldBe(visible.because("Profile button isn't displayed")).click();
     }
 
     @Override

@@ -26,8 +26,8 @@ public class FriendsPage extends LoadableComponent<FriendsPage> {
     @Override
     protected void load() {
         $(FRIENDS_BTN)
-                .should(exist.because("News button isn't rendered"))
-                .shouldBe(visible.because("News button isn't displayed")).click();
+                .should(exist.because("Friends button isn't rendered"))
+                .shouldBe(visible.because("Friends button isn't displayed")).click();
     }
 
     @Override
