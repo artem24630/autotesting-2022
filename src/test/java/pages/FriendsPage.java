@@ -45,21 +45,21 @@ public class FriendsPage extends LoadableComponent<FriendsPage> {
         $(MESSAGES_BTN)
                 .should(exist.because("Messages button isn't rendered"))
                 .shouldBe(visible.because("Messages button isn't displayed")).click();
-        return MessagesPage.getInstanse();
+        return MessagesPage.getInstanse().get();
     }
 
     public NewsFeedPage goToNewsFeedPage() {
         $(NEWS_FEED_BTN)
                 .should(exist.because("News feed button isn't rendered"))
                 .shouldBe(visible.because("News feed button isn't displayed")).click();
-        return NewsFeedPage.getInstanse();
+        return NewsFeedPage.getInstanse().get();
     }
 
     public ProfilePage goToProfilePage() {
         $(PROFILE_BTN)
                 .should(exist.because("Profile button isn't rendered"))
                 .shouldBe(visible.because("Profile button isn't displayed")).click();
-        return ProfilePage.getInstanse();
+        return ProfilePage.getInstanse().get();
     }
 
 }

@@ -56,7 +56,7 @@ public class MessagesPage extends LoadableComponent<MessagesPage> {
         $(FRIENDS_BTN)
                 .should(exist.because("Friends button isn't rendered"))
                 .shouldBe(visible.because("Friends button isn't displayed")).click();
-        return FriendsPage.getInstanse();
+        return FriendsPage.getInstanse().get();
     }
 
     public NewsFeedPage goToNewsFeedPage() {
@@ -64,7 +64,7 @@ public class MessagesPage extends LoadableComponent<MessagesPage> {
         $(NEWS_FEED_BTN)
                 .should(exist.because("News feed button isn't rendered"))
                 .shouldBe(visible.because("News feed button isn't displayed")).click();
-        return NewsFeedPage.getInstanse();
+        return NewsFeedPage.getInstanse().get();
     }
 
     public ProfilePage goToProfilePage() {
@@ -72,7 +72,7 @@ public class MessagesPage extends LoadableComponent<MessagesPage> {
         for (By profileButton: PROFILE_BTNS) {
             if ($(profileButton).exists()) {
                 $(profileButton).shouldBe(visible.because("Profile button isn't displayed")).click();
-                return ProfilePage.getInstanse();
+                return ProfilePage.getInstanse().get();
             }
         }
         throw new RuntimeException("Profile button isn't rendered");

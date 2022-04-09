@@ -34,7 +34,7 @@ public class LoginPage extends LoadableComponent<LoginPage> {
         $(PASSWORD_FIELD).shouldBe(visible.because("Password field isn't displayed!")).setValue(userDetails.password());
         $(INPUT_BUTTON).shouldBe(visible.because("Login button isn't displayed")).click();
 
-        return new NewsFeedPage();
+        return NewsFeedPage.getInstanse().get();
     }
 
 }

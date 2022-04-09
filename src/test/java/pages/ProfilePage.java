@@ -44,21 +44,21 @@ public class ProfilePage extends LoadableComponent<ProfilePage> {
         $(FRIENDS_BTN)
                 .should(exist.because("Friends button isn't rendered"))
                 .shouldBe(visible.because("Friends button isn't displayed")).click();
-        return FriendsPage.getInstanse();
+        return FriendsPage.getInstanse().get();
     }
 
     public MessagesPage goToMessagesPage() {
         $(MESSAGES_BTN)
                 .should(exist.because("Messages button isn't rendered"))
                 .shouldBe(visible.because("Messages button isn't displayed")).click();
-        return MessagesPage.getInstanse();
+        return MessagesPage.getInstanse().get();
     }
 
     public NewsFeedPage goToNewsFeedPage() {
         $(NEWS_FEED_BTN)
                 .should(exist.because("News feed button isn't rendered"))
                 .shouldBe(visible.because("News feed button isn't displayed")).click();
-        return NewsFeedPage.getInstanse();
+        return NewsFeedPage.getInstanse().get();
     }
 
 }
