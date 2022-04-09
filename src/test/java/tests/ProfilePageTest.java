@@ -7,8 +7,7 @@ public class ProfilePageTest extends AbstractTest {
 
     @Test
     void correctProfilePage() {
-        ProfilePage profilePage = new ProfilePage();
-        profilePage.get();
+        ProfilePage.getInstanse().get();
     }
 
 }

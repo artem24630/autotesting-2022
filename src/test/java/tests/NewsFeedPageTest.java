@@ -7,8 +7,7 @@ public class NewsFeedPageTest extends AbstractTest {
 
     @Test
     void correctNewsFeedPage() {
-        NewsFeedPage newsFeedPage = new NewsFeedPage();
-        newsFeedPage.get();
+        NewsFeedPage.getInstanse().get();
     }
 
 }

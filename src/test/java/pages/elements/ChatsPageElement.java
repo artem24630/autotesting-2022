@@ -25,7 +25,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
 
     private static final By INFO_CHAT_BTN = By.xpath("//msg-button[@data-l='t,showChatInfo']");
     private static final By DELETE_CHAT_BTN = By.xpath("//msg-tico[@data-tsid='remove-dialog-btn']");
-    private static final By DELETE_CHAT__CONFIRM_BTN = By.xpath("//msg-button[@data-tsid='confirm-primary']");
+    private static final By DELETE_CHAT_CONFIRM_BTN = By.xpath("//msg-button[@data-tsid='confirm-primary']");
 
     private ElementsCollection chatsList;
 
@@ -69,7 +69,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
         chat.click();
         $(INFO_CHAT_BTN).click();
         $(DELETE_CHAT_BTN).click();
-        $(DELETE_CHAT__CONFIRM_BTN).click();
+        $(DELETE_CHAT_CONFIRM_BTN).click();
     }
 
     private SelenideElement getChatElementByTitle(String title) {

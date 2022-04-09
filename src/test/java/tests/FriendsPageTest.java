@@ -7,8 +7,7 @@ public class FriendsPageTest extends AbstractTest {
 
     @Test
     void correctFriendsPage() {
-        FriendsPage friendsPage = new FriendsPage();
-        friendsPage.get();
+        FriendsPage.getInstanse().get();
     }
 
 }

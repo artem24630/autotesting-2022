@@ -1,7 +1,7 @@
 package tests;
 
 import static com.google.common.truth.Truth.assertThat;
-import pages.MessagePage;
+import pages.MessagesPage;
 import pages.elements.ChatPageElement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,26 +16,31 @@ class MessagePageTest extends AbstractTest {
 
     @Test
     void correctMessagePage() {
-        MessagePage messagePage = new MessagePage();
-        messagePage.get();
+        MessagesPage.getInstanse().get();
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Мобильная разработка s22", "Технополис. Java – 20 (набор 2021)", "NoSQL s22", "Углубленное программирование на Java  2021"})
+    @ValueSource(strings = {
+            "Мобильная разработка s22",
+            "Технополис. Java – 20 (набор 2021)",
+            "NoSQL s22",
+            "Углубленное программирование на Java  2021"
+    })
     void testContainsChats(String title) {
-        MessagePage messagePage = new MessagePage().get();
+        MessagesPage messagePage = MessagesPage.getInstanse().get();
         assertThat(messagePage.getChatsTitle()).contains(title);
     }
 
     @Nested
     @DisplayName("Tests for chats")
     class ChatTests {
-        private static MessagePage messagePage;
+
+        private static MessagesPage messagePage;
         private final String title = "Test";
 
         @BeforeAll
         static void setUp() {
-            messagePage = new MessagePage().get();
+            messagePage = MessagesPage.getInstanse().get();
         }
 
         @BeforeEach
@@ -44,18 +49,17 @@ class MessagePageTest extends AbstractTest {
             assertThat(messagePage.getChatsTitle()).contains(title);
         }
 
-
         @Test
         void sendMessageTest() {
             ChatPageElement chat = messagePage.getChatWithTitle(title);
         }
 
         @AfterEach
-        void deleteChat() throws InterruptedException {
+        void deleteChat() {
             messagePage.deleteChatWithTitle(title);
-//            Thread.sleep(2000);
             assertThat(messagePage.getChatsTitle()).doesNotContain(title);
         }
 
     }
+
 }
