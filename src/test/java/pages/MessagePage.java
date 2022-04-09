@@ -1,18 +1,16 @@
 package pages;
 
-import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.image;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
-import com.codeborne.selenide.SelenideElement;
+import pages.elements.ChatPageElement;
 import pages.elements.ChatsPageElement;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import java.util.List;
 
 public class MessagePage extends LoadableComponent<MessagePage> {
 
@@ -30,7 +28,7 @@ public class MessagePage extends LoadableComponent<MessagePage> {
 
     @Override
     protected void isLoaded() throws Error {
-        $(MESSAGE_PAGE_TITLE).shouldHave(text("Сообщения"));
+        $(MESSAGE_PAGE_TITLE).shouldHave(text("РЎРѕРѕР±С‰РµРЅРёСЏ"));
         ChatsPageElement chatsList = new ChatsPageElement();
         chatsList.get();
 
@@ -41,10 +39,30 @@ public class MessagePage extends LoadableComponent<MessagePage> {
         SelenideElement firstChat = chatsPageElement.getFirstChat();
         if (firstChat != null) {
             firstChat.find(CHAT_WITH_PEOPLE).should(exist).shouldBe(visible);
-            firstChat.find(PEOPLE_AVATAR).should(exist).shouldBe(visible).shouldHave(image);
+            //firstChat.find(PEOPLE_AVATAR).should(exist).shouldBe(visible).shouldHave(image);
             firstChat.find(CONVERSATION_NAME).should(exist).shouldBe(visible).shouldNotBe(empty);
             firstChat.find(LAST_MESSAGE).should(exist).shouldBe(visible).shouldNotBe(empty);
         }
     }
 
+    public List<String> getChatsTitle() {
+        ChatsPageElement chatsList = new ChatsPageElement();
+        chatsList.get();
+        return chatsList.getAllChatsTitles();
+    }
+
+    public void createChatWithTitle(String title) {
+        ChatsPageElement chatsList = new ChatsPageElement().get();
+        chatsList.createChatWithTitle(title);
+    }
+
+    public void deleteChatWithTitle(String title) {
+        ChatsPageElement chatsList = new ChatsPageElement().get();
+        chatsList.deleteChatWithTitle(title);
+    }
+
+    public ChatPageElement getChatWithTitle(String title) {
+        ChatsPageElement chatsList = new ChatsPageElement().get();
+        return chatsList.getChatByTitle(title);
+    }
 }
