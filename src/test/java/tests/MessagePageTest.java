@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import java.util.List;
 
 class MessagePageTest extends AbstractTest {
 
@@ -46,17 +47,29 @@ class MessagePageTest extends AbstractTest {
         @BeforeEach
         void createChat() {
             messagePage.createChatWithTitle(title);
-            assertThat(messagePage.getChatsTitle()).contains(title);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            List<String> chatsTitle = messagePage.getChatsTitle();
+            assertThat(chatsTitle).contains(title);
         }
 
         @Test
         void sendMessageTest() {
             ChatPageElement chat = messagePage.getChatWithTitle(title);
+            //TODO тест на отправку сообщения
         }
 
         @AfterEach
         void deleteChat() {
             messagePage.deleteChatWithTitle(title);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             assertThat(messagePage.getChatsTitle()).doesNotContain(title);
         }
 

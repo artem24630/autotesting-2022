@@ -5,7 +5,6 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-
 import pages.elements.ChatPageElement;
 import pages.elements.ChatsPageElement;
 import com.codeborne.selenide.SelenideElement;
@@ -88,8 +87,7 @@ public class MessagesPage extends LoadableComponent<MessagesPage> {
     }
 
     public List<String> getChatsTitle() {
-        ChatsPageElement chatsList = new ChatsPageElement();
-        chatsList.get();
+        ChatsPageElement chatsList = new ChatsPageElement().get();
         return chatsList.getAllChatsTitles();
     }
 
