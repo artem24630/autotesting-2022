@@ -27,3 +27,4 @@ build/
 
 # private data
 userdetails.txt
+/.gradle/
