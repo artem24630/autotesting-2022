@@ -1,5 +1,6 @@
 package pages.elements;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -37,7 +38,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     @Override
     protected void isLoaded() throws Error {
         $(CHATS_LIST).should(exist);
-        assert (chatsList != null);
+        chatsList.shouldHave(sizeGreaterThan(0));
     }
 
     public SelenideElement getFirstChat() {
