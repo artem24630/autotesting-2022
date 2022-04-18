@@ -28,7 +28,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     private static final By DELETE_CHAT_BTN = By.xpath("//msg-tico[@data-tsid='remove-dialog-btn']");
     private static final By DELETE_CHAT_CONFIRM_BTN = By.xpath("//msg-button[@data-tsid='confirm-primary']");
 
-    private ElementsCollection chatsList;
+    private ElementsCollection chatsList = $$(CHATS_LIST_ITEM);
 
     @Override
     protected void load() {
