@@ -47,8 +47,10 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     public List<String> getAllChatsTitles() {
         chatsList = $$(CHATS_LIST_ITEM);
         List<String> chatsTitles = new ArrayList<>(chatsList.size());
-        for (SelenideElement chat : chatsList) {
-            chatsTitles.add(chat.find(CHAT_TITLE).getText());
+        for (int i = 0; i < chatsList.size(); i++) {
+            SelenideElement chat = chatsList.get(i);
+            SelenideElement chatTitle = chat.find(CHAT_TITLE);
+            chatsTitles.add(chatTitle.getText());
         }
         return chatsTitles;
     }

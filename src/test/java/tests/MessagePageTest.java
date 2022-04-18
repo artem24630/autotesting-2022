@@ -3,6 +3,7 @@ package tests;
 import static com.google.common.truth.Truth.assertThat;
 import pages.MessagesPage;
 import pages.elements.ChatPageElement;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,9 +12,12 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import java.time.Duration;
 import java.util.List;
 
 class MessagePageTest extends AbstractTest {
+
+    private static final Duration TIMEOUT = Duration.ofSeconds(2);
 
     @Test
     void correctMessagePage() {
@@ -46,12 +50,11 @@ class MessagePageTest extends AbstractTest {
 
         @BeforeEach
         void createChat() {
+            int countBefore = messagePage.getChatsTitle().size();
             messagePage.createChatWithTitle(title);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Selenide.Wait().withTimeout(TIMEOUT).until((o) ->
+                    messagePage.getChatsTitle().contains(title)
+            );
             List<String> chatsTitle = messagePage.getChatsTitle();
             assertThat(chatsTitle).contains(title);
         }
@@ -65,11 +68,9 @@ class MessagePageTest extends AbstractTest {
         @AfterEach
         void deleteChat() {
             messagePage.deleteChatWithTitle(title);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Selenide.Wait().withTimeout(TIMEOUT).until((o) ->
+                    !messagePage.getChatsTitle().contains(title)
+            );
             assertThat(messagePage.getChatsTitle()).doesNotContain(title);
         }
 
