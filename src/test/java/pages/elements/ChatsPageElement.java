@@ -45,7 +45,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     }
 
     public List<String> getAllChatsTitles() {
-        chatsList = $$(CHATS_LIST_ITEM);
+        load();
         List<String> chatsTitles = new ArrayList<>(chatsList.size());
         for (int i = 0; i < chatsList.size(); i++) {
             SelenideElement chat = chatsList.get(i);
@@ -63,7 +63,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     }
 
     public void deleteChatWithTitle(String title) {
-        chatsList = $$(CHATS_LIST_ITEM);
+        load();
         deleteChat(getChatElementByTitle(title));
     }
 
@@ -75,7 +75,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     }
 
     private SelenideElement getChatElementByTitle(String title) {
-        chatsList = $$(CHATS_LIST_ITEM);
+        load();
         for (SelenideElement chat : chatsList) {
             if (chat.find(CHAT_TITLE).getText().equals(title)) {
                 return chat;
