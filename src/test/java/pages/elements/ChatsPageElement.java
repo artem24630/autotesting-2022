@@ -48,8 +48,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
     public List<String> getAllChatsTitles() {
         load();
         List<String> chatsTitles = new ArrayList<>(chatsList.size());
-        for (int i = 0; i < chatsList.size(); i++) {
-            SelenideElement chat = chatsList.get(i);
+        for (SelenideElement chat : chatsList) {
             SelenideElement chatTitle = chat.find(CHAT_TITLE);
             chatsTitles.add(chatTitle.getText());
         }
@@ -83,9 +82,5 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
             }
         }
         throw new NoSuchElementException(title);
-    }
-
-    public ChatPageElement getChatByTitle(String title) {
-        return new ChatPageElement(title, getChatElementByTitle(title));
     }
 }

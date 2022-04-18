@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import pages.elements.ChatPageElement;
+
 import pages.elements.ChatsPageElement;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -77,15 +77,6 @@ public class MessagesPage extends LoadableComponent<MessagesPage> {
         throw new RuntimeException("Profile button isn't rendered");
     }
 
-    private void testFirstChat(ChatsPageElement chatsPageElement) {
-        SelenideElement firstChat = chatsPageElement.getFirstChat();
-        if (firstChat != null) {
-            firstChat.find(CHAT_WITH_PEOPLE).should(exist).shouldBe(visible);
-            firstChat.find(CONVERSATION_NAME).should(exist).shouldBe(visible).shouldNotBe(empty);
-            firstChat.find(LAST_MESSAGE).should(exist).shouldBe(visible).shouldNotBe(empty);
-        }
-    }
-
     public List<String> getChatsTitle() {
         ChatsPageElement chatsList = new ChatsPageElement().get();
         return chatsList.getAllChatsTitles();
@@ -101,9 +92,13 @@ public class MessagesPage extends LoadableComponent<MessagesPage> {
         chatsList.deleteChatWithTitle(title);
     }
 
-    public ChatPageElement getChatWithTitle(String title) {
-        ChatsPageElement chatsList = new ChatsPageElement().get();
-        return chatsList.getChatByTitle(title);
+    private void testFirstChat(ChatsPageElement chatsPageElement) {
+        SelenideElement firstChat = chatsPageElement.getFirstChat();
+        if (firstChat != null) {
+            firstChat.find(CHAT_WITH_PEOPLE).should(exist).shouldBe(visible);
+            firstChat.find(CONVERSATION_NAME).should(exist).shouldBe(visible).shouldNotBe(empty);
+            firstChat.find(LAST_MESSAGE).should(exist).shouldBe(visible).shouldNotBe(empty);
+        }
     }
 
 }

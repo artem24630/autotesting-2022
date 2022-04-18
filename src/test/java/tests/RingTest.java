@@ -6,7 +6,7 @@ import pages.NewsFeedPage;
 public class RingTest extends AbstractTest {
 
     @Test
-    public void NewsFeed_Messages_Profile_Friends_NewsFeed() {
+    public void NewsFeedMessagesProfileFriendsNewsFeed() {
         NewsFeedPage.getInstanse()
                 .goToMessagesPage()
                 .goToProfilePage()
@@ -15,7 +15,7 @@ public class RingTest extends AbstractTest {
     }
 
     @Test
-    public void NewsFeed_Messages_Friends_Profile_NewsFeed() {
+    public void NewsFeedMessagesFriendsProfileNewsFeed() {
         NewsFeedPage.getInstanse()
                 .goToMessagesPage()
                 .goToFriendsPage()
@@ -24,7 +24,7 @@ public class RingTest extends AbstractTest {
     }
 
     @Test
-    public void NewsFeed_Friends_Messages_Profile_NewsFeed() {
+    public void NewsFeedFriendsMessagesProfileNewsFeed() {
         NewsFeedPage.getInstanse()
                 .goToFriendsPage()
                 .goToMessagesPage()
@@ -33,7 +33,7 @@ public class RingTest extends AbstractTest {
     }
 
     @Test
-    public void NewsFeed_Friends_Profile_Messages_NewsFeed() {
+    public void NewsFeedFriendsProfileMessagesNewsFeed() {
         NewsFeedPage.getInstanse()
                 .goToFriendsPage()
                 .goToProfilePage()
@@ -42,7 +42,7 @@ public class RingTest extends AbstractTest {
     }
 
     @Test
-    public void NewsFeed_Profile_Messages_Friends_NewsFeed() {
+    public void NewsFeedProfileMessagesFriendsNewsFeed() {
         NewsFeedPage.getInstanse()
                 .goToProfilePage()
                 .goToMessagesPage()
@@ -51,7 +51,7 @@ public class RingTest extends AbstractTest {
     }
 
     @Test
-    public void NewsFeed_Profile_Friends_Messages_NewsFeed() {
+    public void NewsFeedProfileFriendsMessagesNewsFeed() {
         NewsFeedPage.getInstanse()
                 .goToProfilePage()
                 .goToFriendsPage()

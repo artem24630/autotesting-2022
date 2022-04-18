@@ -2,7 +2,6 @@ package tests;
 
 import static com.google.common.truth.Truth.assertThat;
 import pages.MessagesPage;
-import pages.elements.ChatPageElement;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -50,19 +49,12 @@ class MessagePageTest extends AbstractTest {
 
         @BeforeEach
         void createChat() {
-            int countBefore = messagePage.getChatsTitle().size();
             messagePage.createChatWithTitle(title);
             Selenide.Wait().withTimeout(TIMEOUT).until((o) ->
                     messagePage.getChatsTitle().contains(title)
             );
             List<String> chatsTitle = messagePage.getChatsTitle();
             assertThat(chatsTitle).contains(title);
-        }
-
-        @Test
-        void sendMessageTest() {
-            ChatPageElement chat = messagePage.getChatWithTitle(title);
-            //TODO тест на отправку сообщения
         }
 
         @AfterEach
