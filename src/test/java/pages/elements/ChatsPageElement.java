@@ -1,10 +1,5 @@
 package pages.elements;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -12,6 +7,12 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import javax.annotation.Nullable;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
 
@@ -41,6 +42,7 @@ public class ChatsPageElement extends LoadableComponent<ChatsPageElement> {
         chatsList.shouldHave(sizeGreaterThan(0));
     }
 
+    @Nullable
     public SelenideElement getFirstChat() {
         return chatsList.isEmpty() ? null : chatsList.first();
     }
